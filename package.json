@@ -1,0 +1,22 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "MCR codes OOP task",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DanHope90/cruise-ships.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanHope90/cruise-ships/issues"
+  },
+  "homepage": "https://github.com/DanHope90/cruise-ships#readme",
+  "devDependencies": {
+    "jest": "^27.4.5"
+  }
+}
