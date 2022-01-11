@@ -1,28 +1,56 @@
 const Ship = require('../src/ships.js');
-const Port = require('../src/ports.js')
+const Itinerary = require('../src/itinerary.js');
+const Port = require('../src/ports.js');
 
 describe('ship', () => {
     it('new ship created', () => {
-        expect(new Ship()).toBeInstanceOf(Object)
+        const port = new Port('Dublin')
+        const itinerary = new Itinerary([port])
+        const ship = new Ship(itinerary)
+        expect(ship).toBeInstanceOf(Object)
     });
     it('ship starting port', () => {
         const port = new Port('Dublin')
-        const ship = new Ship(port)
-        
+        const itinerary = new Itinerary([port])
+        const ship = new Ship(itinerary)
         expect(ship.currentPort).toBe(port)
     });
-    it('ship ready to set sail', () => {
+   it('ship previous port', () => {
         const port = new Port('Dublin')
         const ship = new Ship(port)
-        ship.setSail()
-        expect(this.currentPort).toBeFalsy();
+        expect(ship.previousPort).toBeFalsy()
     });
+    it('ship ready to set sail', () => {
+        const port = new Port ('Dublin')
+        const itinerary = new Itinerary([port, port])
+        const ship = new Ship(itinerary)
+        ship.setSail()
+        expect(ship.currentPort).toBeFalsy();
+    });
+    
+    it('ship set sail to previous port', () => {
+        const port = new Port ('Dublin')
+        const itinerary = new Itinerary([port, port])
+        const ship = new Ship(itinerary)
+        ship.setSail()
+        expect(this.previousPort).toBe(this.currentPort)
+   });
     it('can dock at different port', () => {
         const dublin = new Port('Dublin')
-        const ship = new Ship(dublin)
         const liverpool = new Port('Liverpool')
+        const itinerary = new Itinerary([dublin, liverpool])
+        const ship = new Ship(itinerary)
         ship.setSail()
-        ship.dock(liverpool)
-        expect(ship.currentPort).toBe(liverpool)
+        ship.dock()
+        expect(ship.currentPort).toBe(liverpool);
+    });
+    it("can't go further that the itinerary", () => {
+        const dublin = new Port ('Dublin')
+        const liverpool = new Port('Liverpool')
+        const itinerary = new Itinerary([dublin, liverpool])
+        const ship = new Ship(itinerary)
+        ship.setSail()
+        ship.dock()
+        expect(() => ship.setSail()).toThrowError('End of itinerary reached')
     });
 });

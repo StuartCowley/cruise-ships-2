@@ -1,5 +1,6 @@
-function Port (name, liverpool, dublin) {
-    this.portName = name;
+function Port (name) {
+    this.ports = name;
+
 };
 
 

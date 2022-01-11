@@ -6,6 +6,6 @@ describe('Port', () => {
   });
   it('new port', () => {
     const port = new Port('Dublin')
-    expect(port.portName).toBe('Dublin');
+    expect(port.ports).toBe('Dublin');
   });
 });
