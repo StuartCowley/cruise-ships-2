@@ -8,7 +8,7 @@ describe('ship', () => {
         let dublin 
         let liverpool 
         let itinerary 
-        let ship 
+        let ship
        
         beforeEach(() => {
         dublin = new Port('Dublin')

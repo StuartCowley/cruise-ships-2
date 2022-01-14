@@ -1,5 +1,4 @@
 const Port = require('../src/ports.js');
-const Ship = require('../src/ships.js');
 
 describe('Port', () => {
   describe('port and ship', () => {
@@ -8,7 +7,7 @@ describe('Port', () => {
 
     beforeEach(() => {
       port = new Port('Dublin')
-      ship = {}
+      ship = jest.fn()
     })
   
     it('instantiated', () => {
@@ -26,14 +25,12 @@ describe('Port', () => {
   })
 
   it('removes ship from port', () => {
-    const hmslmao = {}
-    const hmslol = {}
+    
+    port.addShip(ship)
+    port.addShip(ship)
+    port.removeShip(ship)
 
-    port.addShip(hmslmao)
-    port.addShip(hmslol)
-    port.removeShip(hmslol)
-
-    expect(port.ships).toEqual([hmslmao])
+    expect(port.ships).toEqual([ship])
   });
 });
 });
