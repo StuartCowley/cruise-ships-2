@@ -8,23 +8,23 @@ describe('Port', () => {
     beforeEach(() => {
       port = new Port('Dublin')
       ship = jest.fn()
-    })
+    });
   
     it('instantiated', () => {
     expect(new Port()).toBeInstanceOf(Object);
-  })
+  });
 
-  it('new port', () => {
+    it('new port', () => {
     expect(port.ports).toBe('Dublin');
-  })
+  });
 
-  it('adds ship to port', () => {
-   
+    it('adds ship to port', () => {
     port.addShip(ship)
-    expect(port.ships).toContain(ship)
-  })
 
-  it('removes ship from port', () => {
+    expect(port.ships).toContain(ship)
+  });
+
+    it('removes ship from port', () => {
     port.addShip(ship)
     port.addShip(ship)
     port.removeShip(ship)

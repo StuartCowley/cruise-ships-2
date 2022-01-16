@@ -1,6 +1,5 @@
 const Ship = require('../src/ships.js');
-const Itinerary = require('../src/itinerary.js');
-const Port = require('../src/ports.js');
+
 
 describe('ship', () => {
 
@@ -24,14 +23,18 @@ describe('ship', () => {
             name: 'Liverpool',
             ships: []
         }
-        itinerary = new Itinerary([dublin, liverpool])
+
+        itinerary = {
+            ports: [dublin, liverpool]
+        };
+
         ship = new Ship(itinerary)
-        })
+        });
 
         it('can be instatiated', () => {
 
         expect(ship).toBeInstanceOf(Object)
-        })
+        });
 
         it('ship starting port', () => {
 
@@ -62,7 +65,8 @@ describe('ship', () => {
         expect(dublin.addShip).toHaveBeenCalledWith(ship)
         });
 
-        it('can dock at different port', () => {
+        it('can dock at a different port', () => {
+            
             ship.setSail()
             ship.dock()
 
