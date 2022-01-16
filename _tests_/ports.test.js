@@ -25,7 +25,6 @@ describe('Port', () => {
   })
 
   it('removes ship from port', () => {
-    
     port.addShip(ship)
     port.addShip(ship)
     port.removeShip(ship)
@@ -34,3 +33,4 @@ describe('Port', () => {
   });
 });
 });
+    
